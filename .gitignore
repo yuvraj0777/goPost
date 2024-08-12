@@ -1,0 +1,87 @@
+# Node.js dependencies
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# Production build
+dist/
+build/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Optional npm cache directory
+.npm
+
+# Yarn Integrity file
+.yarn-integrity
+
+# MongoDB Data (if any local databases are stored within the project directory)
+*.lock
+*.shm
+*.wal
+dump/
+data/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Coverage directory used by testing frameworks like Jest or Mocha
+coverage/
+
+# Temporary files
+tmp/
+temp/
+
+# Optional REPL history
+.node_repl_history
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Build script output
+.nyc_output/
+
+# Storybook files
+.out/
+.out.json
+
+# If you use Docker:
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Ignore public assets if using an upload service
+public/uploads/
+
+# Next.js build
+.next/
+
+# Nuxt.js build
+.nuxt/
+
+# Other caches
+.cache/
+.parcel-cache/
+
+# Specific tools or configurations
+.sass-cache/

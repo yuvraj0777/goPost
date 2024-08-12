@@ -1,0 +1,152 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-direction: column;
+  text-align: center;
+}
+
+nav a {
+  margin: 0.5rem 0;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.post {
+  background-color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.post h4 {
+  margin-bottom: 10px;
+}
+
+.post p {
+  margin-bottom: 20px;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.glow {
+  font-size: 100px;
+  font-weight: 500;
+  background: linear-gradient(to right, red, blue);
+  color: transparent;
+  -webkit-background-clip: text;
+  text-shadow: 0 0 60px rgba(255, 0, 0, 0.568);
+  animation: anime 1s infinite alternate;
+}
+
+@keyframes anime {
+  100% {
+    text-shadow: 0 0 60px rgba(132, 0, 255, 0.473);
+  }
+}
+
+/* for responsive ness */
+
+nav {
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  nav {
+    flex-direction: row;
+  }
+}
+
+h3,
+h4 {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  h3,
+  h4 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h3,
+  h4 {
+    font-size: 2.5rem;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 640px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  nav a {
+    margin: 0 1rem;
+  }
+
+  .post {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .post {
+    width: 75%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .post {
+    width: 50%;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+.slide-in {
+  animation: slideIn 1s ease-in;
+}

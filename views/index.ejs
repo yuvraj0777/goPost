@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Posts</title>
+    <link rel="stylesheet" href="stylesheet/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes glowing-border {
+        0% {
+          border-color: #FFF078; 
+          /* box-shadow: 0 0 10px #6366f1; */
+        }
+        33% {
+          border-color: #FFA823; 
+          /* box-shadow: 0 0 10px #ec4899; */
+        }
+        66% {
+          border-color: #8b5cf6; 
+          /* box-shadow: 0 0 10px #8b5cf6; */
+        }
+        100% {
+          border-color: #6366f1; 
+          /* box-shadow: 0 0 10px #6366f1; */
+        }
+      }
+
+      .glowing-border {
+        animation: glowing-border 3s linear infinite;
+      }
+
+
+      
+    </style>
+</head>
+<body>
+    <nav class="bg-zinc-700 text-white p-4 flex justify-between items-center border-b-2">
+        <div class="flex items-center gap-6">
+            <div class="overflow-hidden w-12 h-12 bg-zinc-500 rounded-full hover:translate-x-5"> 
+                <img class="w-12 h-12 object-cover cursor-pointer p-2" src="icons/go_post_logo.png" alt="logo">
+            </div>
+            <a href="/createuser" class="transition rounded-md text-white text-xl py-2 px-4 hover:bg-zinc-600 hover:text-sky-300">
+                Create Account
+            </a>
+            <a href="/profile" class="transition rounded-md text-white text-xl py-2 px-4 hover:bg-zinc-600 hover:text-sky-300">
+                Profile
+            </a>
+        </div> 
+        <div class="flex items-center gap-6">
+            <a href="/login" class="transition rounded-md text-sm py-2 px-4 bg-blue-500 hover:bg-blue-600">
+                Login
+            </a>
+        </div>
+    </nav>
+
+    <div class="w-full min-h-screen bg-zinc-800 text-white p-10">
+        <div class="flex justify-center  mt-5 items-center mb-8">
+            <h3 class="text-3xl mb-5 items-center flex justify-center glow hover:translate-y-5">Hi Everyone</h3>
+        </div>
+
+        <% if (users.length === 0) { %>
+            <h3 class="text-center text-xl text-red-500 mb-8">You are not logged in. Please register or log in.</h3>
+        <% } else { %>
+            <div class="flex flex-col justify-center gap-4">
+                <% users.forEach((user) => { %>
+                    <div class="w-full p-4 mb-6 bg-zinc-700 rounded-md border border-zinc-600">
+                        <div class="flex items-center mb-3 fade-in">
+                            <div class="w-16 h-16 rounded-full overflow-hidden border-4 mr-4 glowing-border">
+                                <img class="w-full h-full object-cover cursor-pointer" src="/images/uploads/<%= user.profilepic %>" alt="user profile">
+                            </div>
+                            <h4 class="text-xl font-semibold text-blue-500">@<%= user.username %></h4>
+                        </div>
+                        <% if (user.posts.length === 0) { %>
+                            <h3 class="text-zinc-500 text-xl">No posts yet</h3>
+                        <% } else { %>
+                            <% user.posts.forEach((post) => { %>
+                                <div class="post mb-2 w-1/2 p-3 rounded-md bg-zinc-800 mt-5 border-2 border-zinc-600 slide-in">
+                                    <p class="tracking-tight text-sm mb-2 text-zinc-400"><%= post.content %></p>
+                                    <div class="flex items-center justify-between">
+                                        <small class="text-gray-400"><%= post.likes.length %> likes</small>
+                                        <a class="text-blue-500" href="/like/<%= post._id %>">
+                                            <%= post.likes.indexOf(user._id) === -1 ? "Like" : "Unlike" %>
+                                        </a>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
